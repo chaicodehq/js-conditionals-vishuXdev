@@ -23,4 +23,27 @@
  */
 export function getTrafficAction(color) {
   // Your code here
+  let trafficMessage ;
+
+  let insens_color = color.toLowerCase();
+
+  if(typeof insens_color != "string") {
+    return "INVALID SIGNAL"
+  };
+
+
+  switch(insens_color){
+    case "green": trafficMessage = "GO";
+    break;
+    case "yellow": trafficMessage = "SLOW DOWN";
+    break;
+    case "red": trafficMessage = "STOP";
+    break;
+    case "flashing red": trafficMessage = "STOP AND PROCEED WITH CAUTION";
+    break;
+    default : trafficMessage = "INVALID SIGNAL";
+  }
+
+  return trafficMessage;
+
 }

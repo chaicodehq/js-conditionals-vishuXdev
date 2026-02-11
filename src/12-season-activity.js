@@ -31,5 +31,64 @@
  * @returns {{ season: string, activity: string } | null}
  */
 export function getSeasonActivity(month, temperature) {
-  // Your code here
+
+  
+  let seasonNews ;
+
+function activity(season, temp) {
+  if (season === "Winter") {
+    if (temp < 0) {
+      return "skiing";
+    } else {
+      return "ice skating";
+    }
+  }
+
+  else if (season === "Spring") {
+    if (temp > 20) {
+      return "hiking";
+    } else {
+      return "museum visit";
+    }
+  }
+
+  else if (season === "Summer") {
+    if (temp > 35) {
+      return "swimming";
+    } else {
+      return "cycling";
+    }
+  }
+
+  else if (season === "Autumn") {
+    if (temp > 15) {
+      return "nature walk";
+    } else {
+      return "reading at a cafe";
+    }
+  }
+
+}
+
+  if((month < 1 || month > 12) && typeof month != "number"){
+    return null
+  };
+
+  if((month == 12 || month == 1 || month == 2)){
+    const activities = activity("Winter", temperature);
+    seasonNews = { season: "Winter", activity: activities };
+  } else if(month == 3 || month == 4 || month == 5){
+    const activities = activity("Spring", temperature);
+    seasonNews = { season: "Spring", activity: activities };
+  } else if(month == 6 || month == 7 || month == 8){
+    const activities = activity("Summer", temperature);
+    seasonNews = { season: "Summer", activity: activities };
+  } else if(month == 9 || month == 10 || month == 11){
+    const activities = activity("Autumn", temperature);
+    seasonNews = { season: "Autumn", activity: activities };
+  }else {
+    seasonNews=null;
+  }
+
+  return seasonNews;
 }

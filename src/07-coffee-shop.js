@@ -31,5 +31,33 @@
  * @returns {number} Total price or -1 for invalid input
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
-  // Your code here
+  
+  if(!["small" , "medium" , "large"].includes(size)) {
+    return -1;
+  };
+
+  if(!["regular", "latte", "cappuccino",  "mocha"].includes(type)) {
+    return -1;
+  }
+
+  let price =0 ;
+
+  if(size === "small"){
+    price += 3;
+    (type === "regular") ? price+=0 : (type === "latte") ? price+=1: (type === "cappuccino")?price+=1.50: (type === "mocha"?price+=2: "INVALID");
+      extras.whippedCream? price+=0.50:"INVALID"
+      extras.extraShot?price+=0.75:"INVALID";
+  } else if(size === "medium") {
+    price += 4;
+      (type === "regular") ? price+=0 : (type === "latte") ? price+=1: (type === "cappuccino")?price+=1.50: (type === "mocha"?price+=2: "INVALID");
+      extras.whippedCream? price+=0.50:"INVALID";
+      extras.extraShot?price+=0.75:"INVALID";
+  } else if(size === "large") {
+    price += 5;
+      (type === "regular") ? price+=0 : (type === "latte") ? price+=1: (type === "cappuccino")?price+=1.50: (type === "mocha"?price+=2: "INVALID");
+      extras.whippedCream? price+=0.50:"INVALID"
+      extras.extraShot?price+=0.75:"INVALID";
+  }
+
+    return price;
 }
